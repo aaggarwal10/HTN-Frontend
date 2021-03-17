@@ -76,21 +76,21 @@
 export default {
   data () {
     return {
+      // Hardcoded Valid Authorization
       adminUsername: 'hacker@hglobalinc',
       adminPass: '1234abcd',
+
+      // Error Message for Form Validation
       errorMess: '',
+      // Form submitted for validation when onLogin() called
       form: {
         username: '',
         password: ''
-      },
-      usernameRules: [
-        v => !!v || 'Name is required',
-        v => v || 'Name must be less than 10 characters'
-      ]
+      }
     }
   },
   methods: {
-    onLogin () {
+    onLogin () { // On Login Click, validate form for correct username & password.
       if (this.$refs.form.validate()) {
         if (this.form.username === this.adminUsername && this.form.password === this.adminPass) {
           this.$store.commit('auth/setloggedIn', true)
